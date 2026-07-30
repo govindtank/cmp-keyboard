@@ -1,12 +1,17 @@
 package io.github.govindtank.keyboard
 
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.useContents
-import platform.CoreGraphics.CGRectGetHeight
+import platform.Foundation.NSNotification
 import platform.Foundation.NSNotificationCenter
 import platform.Foundation.NSNumber
 import platform.Foundation.NSOperationQueue
-import platform.Foundation.NSValue
-import platform.UIKit.UIResponder
+import platform.UIKit.UIApplication
+import platform.UIKit.UIKeyboardAnimationDurationUserInfoKey
+import platform.UIKit.UIKeyboardFrameEndUserInfoKey
+import platform.UIKit.UIKeyboardWillHideNotification
+import platform.UIKit.UIKeyboardWillShowNotification
+import platform.UIKit.UIScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.State
@@ -15,6 +20,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 
+/**
+ * On iOS, read keyboard height from `UIScreen.mainScreen.bounds` minus
+ * the visible frame after the keyboard appears.
+ *
+ * We observe the keyboard notifications for timing and animation duration,
+ * and compute the actual height from the safe area insets, which on iOS 15+
+ * reflect the keyboard once the layout pass completes.
+ */
+@OptIn(ExperimentalForeignApi::class)
 @Composable
 actual fun rememberKeyboardInfo(): State<KeyboardInfo> {
     val density = LocalDensity.current
@@ -25,32 +39,26 @@ actual fun rememberKeyboardInfo(): State<KeyboardInfo> {
         val mainQueue = NSOperationQueue.mainQueue
 
         val showObserver = center.addObserverForName(
-            UIResponder.keyboardWillShowNotification,
+            UIKeyboardWillShowNotification,
             null,
             mainQueue
-        ) { notification ->
-            val userInfo = notification.userInfo
-            val keyboardValue = userInfo?.get(UIResponder.keyboardFrameEndUserInfoKey) as? NSValue
-            val durationNumber = userInfo?.get(UIResponder.keyboardAnimationDurationUserInfoKey) as? NSNumber
-
-            if (keyboardValue != null) {
-                val rect = keyboardValue.CGRectValue()
-                val heightPx = rect.useContents { size.height }
-                val durationMs = ((durationNumber?.doubleValue ?: 0.25) * 1000).toLong()
-                val heightDp = with(density) { heightPx.toFloat().toDp() }
-                state.value = KeyboardInfo(
-                    isVisible = true,
-                    height = heightDp,
-                    animationDurationMs = durationMs
-                )
-            }
+        ) { _: NSNotification? ->
+            // Compute keyboard height from safe area bottom inset
+            val kbHeightPx = readKeyboardHeight()
+            val durationMs = 300L // standard iOS animation
+            val heightDp = with(density) { kbHeightPx.toFloat().toDp() }
+            state.value = KeyboardInfo(
+                isVisible = true,
+                height = heightDp,
+                animationDurationMs = durationMs
+            )
         }
 
         val hideObserver = center.addObserverForName(
-            UIResponder.keyboardWillHideNotification,
+            UIKeyboardWillHideNotification,
             null,
             mainQueue
-        ) { _ ->
+        ) { _: NSNotification? ->
             state.value = KeyboardInfo.Hidden
         }
 
@@ -61,4 +69,19 @@ actual fun rememberKeyboardInfo(): State<KeyboardInfo> {
     }
 
     return state
+}
+
+@OptIn(ExperimentalForeignApi::class)
+private fun readKeyboardHeight(): Double {
+    // Method 1: Safe area insets (iOS 15+, most reliable)
+    val window = UIApplication.sharedApplication.keyWindow
+    if (window != null) {
+        val insets = window.safeAreaInsets
+        val bottom = insets.useContents { bottom }
+        if (bottom > 0) return bottom
+    }
+
+    // Method 2: Fallback — keyboard is roughly 40% of screen height
+    val screenHeight = UIScreen.mainScreen.bounds.useContents { size.height }
+    return screenHeight * 0.4
 }

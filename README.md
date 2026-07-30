@@ -1,5 +1,7 @@
 # cmp-keyboard
 
+<img src="./screenshot.svg" width="750" alt="cmp-keyboard before/after comparison"/>
+
 **Compose Multiplatform reactive keyboard-aware layout.**
 
 A lightweight library that detects the software keyboard on Android and iOS and provides a simple composable API to adjust your layout.

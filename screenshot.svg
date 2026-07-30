@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fafafa"/><stop offset="100%" stop-color="#f0f0f0"/></linearGradient>
+    <filter id="phoneShadow"><feDropShadow dx="0" dy="8" stdDeviation="20" flood-opacity="0.2"/></filter>
+  </defs>
+
+  <!-- LEFT: WITHOUT KeyboardAware (BAD) -->
+  <g transform="translate(20, 10)">
+    <rect x="0" y="0" width="300" height="640" rx="32" fill="#1a1a2e" filter="url(#phoneShadow)"/>
+    <rect x="6" y="6" width="288" height="628" rx="28" fill="#fff"/>
+    <rect x="120" y="14" width="60" height="16" rx="8" fill="#1a1a2e"/>
+
+    <!-- X badge -->
+    <rect x="70" y="40" width="80" height="24" rx="12" fill="#FFEBEE"/>
+    <text x="110" y="56" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#C62828" text-anchor="middle">✕ Without</text>
+
+    <!-- Status bar -->
+    <text x="20" y="50" font-family="system-ui,sans-serif" font-size="10" fill="#666">9:41</text>
+
+    <!-- Header -->
+    <text x="150" y="82" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#222" text-anchor="middle">Chat</text>
+
+    <!-- Chat messages -->
+    <rect x="16" y="100" width="160" height="30" rx="14" fill="#f0f0f0"/>
+    <text x="24" y="118" font-family="system-ui,sans-serif" font-size="12" fill="#333">Hey! Ready for meeting?</text>
+
+    <rect x="124" y="140" width="140" height="30" rx="14" fill="#1976D2"/>
+    <text x="132" y="158" font-family="system-ui,sans-serif" font-size="12" fill="#fff">Yes, joining in 5 min</text>
+
+    <rect x="16" y="180" width="130" height="30" rx="14" fill="#f0f0f0"/>
+    <text x="24" y="198" font-family="system-ui,sans-serif" font-size="12" fill="#333">Great, see you there</text>
+
+    <rect x="230" y="220" width="40" height="30" rx="14" fill="#1976D2"/>
+    <text x="250" y="238" font-family="system-ui,sans-serif" font-size="12" fill="#fff">👍</text>
+
+    <!-- Message hidden behind keyboard (faded) -->
+    <rect x="124" y="260" width="110" height="30" rx="14" fill="#1976D2" opacity="0.3"/>
+    <text x="132" y="278" font-family="system-ui,sans-serif" font-size="12" fill="#fff" opacity="0.3">On my way</text>
+
+    <!-- Input bar - hidden behind keyboard -->
+    <rect x="16" y="300" width="200" height="36" rx="18" fill="#f0f0f0" opacity="0.4"/>
+    <text x="30" y="323" font-family="system-ui,sans-serif" font-size="11" fill="#999" opacity="0.4">Type a message...</text>
+    <rect x="224" y="300" width="50" height="36" rx="18" fill="#1976D2" opacity="0.4"/>
+    <text x="249" y="323" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" opacity="0.4" text-anchor="middle">Send</text>
+
+    <!-- Keyboard overlaying -->
+    <rect x="6" y="344" width="288" height="290" rx="0" fill="#D0D4DA"/>
+    <rect x="6" y="344" width="288" height="290" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+    <text x="150" y="380" font-family="system-ui,sans-serif" font-size="30" font-weight="900" fill="rgba(198,40,40,0.12)" text-anchor="middle">✕</text>
+
+    <!-- Keyboard visual -->
+    <g transform="translate(20, 370)">
+      <g>
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Q</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">W</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">E</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">R</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">T</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Y</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">U</text>
+        <rect x="182" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="194" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">I</text>
+        <rect x="208" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="220" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">O</text>
+        <rect x="234" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="246" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">P</text>
+      </g>
+      <g transform="translate(10, 36)">
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">A</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">S</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">D</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">F</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">G</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">H</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">J</text>
+        <rect x="182" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="194" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">K</text>
+        <rect x="208" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="220" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">L</text>
+      </g>
+      <g transform="translate(30, 72)">
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Z</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">X</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">C</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">V</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">B</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">N</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">M</text>
+      </g>
+    </g>
+
+    <!-- Error message -->
+    <text x="150" y="680" font-family="system-ui,sans-serif" font-size="10" fill="#C62828" text-anchor="middle">⚠ Input hidden behind keyboard</text>
+  </g>
+
+  <!-- RIGHT: WITH KeyboardAware (GOOD) -->
+  <g transform="translate(360, 10)">
+    <rect x="0" y="0" width="300" height="640" rx="32" fill="#1a1a2e" filter="url(#phoneShadow)"/>
+    <rect x="6" y="6" width="288" height="628" rx="28" fill="#fff"/>
+    <rect x="120" y="14" width="60" height="16" rx="8" fill="#1a1a2e"/>
+
+    <!-- Checkmark badge -->
+    <rect x="70" y="40" width="80" height="24" rx="12" fill="#E8F5E9"/>
+    <text x="110" y="56" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#2E7D32" text-anchor="middle">✓ With</text>
+
+    <!-- Status bar -->
+    <text x="20" y="50" font-family="system-ui,sans-serif" font-size="10" fill="#666">9:41</text>
+
+    <!-- Header -->
+    <text x="150" y="82" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#222" text-anchor="middle">Chat</text>
+
+    <!-- Chat messages -->
+    <rect x="16" y="100" width="160" height="30" rx="14" fill="#f0f0f0"/>
+    <text x="24" y="118" font-family="system-ui,sans-serif" font-size="12" fill="#333">Hey! Ready for meeting?</text>
+
+    <rect x="124" y="140" width="140" height="30" rx="14" fill="#1976D2"/>
+    <text x="132" y="158" font-family="system-ui,sans-serif" font-size="12" fill="#fff">Yes, joining in 5 min</text>
+
+    <rect x="16" y="180" width="130" height="30" rx="14" fill="#f0f0f0"/>
+    <text x="24" y="198" font-family="system-ui,sans-serif" font-size="12" fill="#333">Great, see you there</text>
+
+    <rect x="230" y="220" width="40" height="30" rx="14" fill="#1976D2"/>
+    <text x="250" y="238" font-family="system-ui,sans-serif" font-size="12" fill="#fff">👍</text>
+
+    <!-- Additional visible messages (keyboard pushed them up, so more are visible) -->
+    <rect x="124" y="260" width="110" height="30" rx="14" fill="#1976D2"/>
+    <text x="132" y="278" font-family="system-ui,sans-serif" font-size="12" fill="#fff">On my way</text>
+
+    <rect x="16" y="300" width="170" height="30" rx="14" fill="#f0f0f0"/>
+    <text x="24" y="318" font-family="system-ui,sans-serif" font-size="12" fill="#333">Perfect! See you soon 👋</text>
+
+    <!-- Input bar STAYS ABOVE keyboard -->
+    <rect x="16" y="344" width="200" height="36" rx="18" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+    <text x="28" y="367" font-family="system-ui,sans-serif" font-size="11" fill="#999">Type a message...</text>
+    <rect x="224" y="344" width="50" height="36" rx="18" fill="#1976D2"/>
+    <text x="249" y="367" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Send</text>
+
+    <!-- Keyboard below input (correct position!) -->
+    <rect x="6" y="388" width="288" height="246" rx="0" fill="#D0D4DA"/>
+    <rect x="6" y="388" width="288" height="246" rx="0" fill="none" stroke="#bbb" stroke-width="1"/>
+
+    <g transform="translate(20, 400)">
+      <g>
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Q</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">W</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">E</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">R</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">T</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Y</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">U</text>
+        <rect x="182" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="194" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">I</text>
+        <rect x="208" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="220" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">O</text>
+        <rect x="234" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="246" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">P</text>
+      </g>
+      <g transform="translate(10, 36)">
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">A</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">S</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">D</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">F</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">G</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">H</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">J</text>
+        <rect x="182" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="194" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">K</text>
+        <rect x="208" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="220" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">L</text>
+      </g>
+      <g transform="translate(30, 72)">
+        <rect x="0" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="12" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">Z</text>
+        <rect x="26" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="38" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">X</text>
+        <rect x="52" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="64" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">C</text>
+        <rect x="78" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="90" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">V</text>
+        <rect x="104" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="116" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">B</text>
+        <rect x="130" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="142" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">N</text>
+        <rect x="156" y="0" width="24" height="32" rx="4" fill="#fff"/><text x="168" y="20" font-family="system-ui,sans-serif" font-size="10" fill="#333" text-anchor="middle">M</text>
+      </g>
+    </g>
+
+    <!-- Checkmark overlay -->
+    <text x="265" y="340" font-family="system-ui,sans-serif" font-size="28" fill="#4CAF50">✓</text>
+
+    <!-- Success message -->
+    <text x="150" y="680" font-family="system-ui,sans-serif" font-size="10" fill="#2E7D32" text-anchor="middle">✓ Input stays above keyboard</text>
+  </g>
+
+  <!-- Title -->
+  <text x="20" y="710" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#333">cmp-keyboard</text>
+  <text x="20" y="732" font-family="system-ui,sans-serif" font-size="14" fill="#666">Compose Multiplatform — KeyboardAware Layout</text>
+
+  <text x="660" y="710" font-family="system-ui,sans-serif" font-size="12" fill="#888" text-anchor="end">github.com/govindtank/cmp-keyboard</text>
+</svg>
