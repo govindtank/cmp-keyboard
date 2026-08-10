@@ -1,5 +1,7 @@
 # cmp-keyboard
 
+[![JitPack](https://jitpack.io/v/govindtank/cmp-keyboard.svg)](https://jitpack.io/#govindtank/cmp-keyboard)
+
 <img src="./screenshot.svg" width="750" alt="cmp-keyboard before/after comparison"/>
 
 ```kotlin
@@ -21,22 +23,22 @@ Compose Multiplatform has no built-in way to handle the software keyboard across
 - **iOS** — The keyboard overlays your Compose content entirely. No built-in handling.
 
 `cmp-keyboard` solves this with **one composable** that works everywhere.
-
 ## Installation
 
+Add the JitPack repository and dependency to your `build.gradle.kts`:
+
 ```kotlin
-// settings.gradle.kts
-dependencyResolutionManagement {
-    repositories {
-        mavenCentral()
-    }
+repositories {
+    maven { url = uri("https://jitpack.io") }
 }
 
-// build.gradle.kts (module)
 dependencies {
-    implementation("io.github.govindtank:cmp-keyboard:1.0.0")
+    implementation("com.github.govindtank:cmp-keyboard:1.0.0")
 }
 ```
+
+> [!IMPORTANT]
+> After tagging a release on GitHub (`git tag v1.0.0 && git push --tags`), JitPack automatically builds and publishes the artifacts. Replace `1.0.0` with your actual tag.
 
 ## Quick Start
 
