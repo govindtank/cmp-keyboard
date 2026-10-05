@@ -1,29 +1,36 @@
 # cmp-keyboard
 
-[![JitPack](https://jitpack.io/v/govindtank/cmp-keyboard.svg)](https://jitpack.io/#govindtank/cmp-keyboard)
+<p align="center">
+  <a href="https://jitpack.io/#govindtank/cmp-keyboard"><img src="https://jitpack.io/v/govindtank/cmp-keyboard.svg?style=flat-square" alt="JitPack"></a>
+  <a href="https://github.com/govindtank/cmp-keyboard/actions"><img src="https://img.shields.io/github/actions/workflow/status/govindtank/cmp-keyboard/build.yml?branch=main&style=flat-square&label=build" alt="Build Status"></a>
+  <img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20CMP-blue?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/Kotlin-2.0.0-purple?style=flat-square" alt="Kotlin">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-green.svg?style=flat-square" alt="License"></a>
+  <a href="https://github.com/govindtank"><img src="https://img.shields.io/badge/Author-Govind%20Tank-orange?style=flat-square" alt="Author"></a>
+</p>
 
-<img src="./screenshot.svg" width="750" alt="cmp-keyboard before/after comparison"/>
+<p align="center">
+  <b>Compose Multiplatform reactive keyboard-aware layout engine.</b><br>
+  <i>Architected &amp; Crafted with ❤️ by <a href="https://github.com/govindtank">Govind Tank</a></i>
+</p>
 
-```kotlin
-// build.gradle.kts (module)
-dependencies {
-    implementation("io.github.govindtank:cmp-keyboard:1.0.0")
-}
-```
+<p align="center">
+  <img src="./screenshot.svg" width="750" alt="cmp-keyboard before/after comparison" style="border-radius: 14px;" />
+</p>
 
-**Compose Multiplatform reactive keyboard-aware layout.**
+---
 
-A lightweight library that detects the software keyboard on Android and iOS and provides a simple composable API to adjust your layout.
+## ⚡ Why `cmp-keyboard`?
 
-## Why?
+Compose Multiplatform has historically lacked consistent software keyboard handling across mobile platforms:
+- **Android** — `Modifier.imePadding()` behaves inconsistently on foldables, landscape modes, and edge-to-edge gesture navigation.
+- **iOS** — The software keyboard overlays Compose content entirely by default without automatic insets.
 
-Compose Multiplatform has no built-in way to handle the software keyboard across platforms:
+`cmp-keyboard` solves this with **one declarative composable** that works seamlessly everywhere.
 
-- **Android** — `Modifier.imePadding()` exists but is inconsistent on foldables, landscape, and gesture nav
-- **iOS** — The keyboard overlays your Compose content entirely. No built-in handling.
+---
 
-`cmp-keyboard` solves this with **one composable** that works everywhere.
-## Installation
+## 📦 Installation
 
 Add the JitPack repository and dependency to your `build.gradle.kts`:
 
@@ -37,129 +44,77 @@ dependencies {
 }
 ```
 
-> [!IMPORTANT]
-> After tagging a release on GitHub (`git tag v1.0.0 && git push --tags`), JitPack automatically builds and publishes the artifacts. Replace `1.0.0` with your actual tag.
+---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```kotlin
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import io.github.govindtank.keyboard.KeyboardAware
 import io.github.govindtank.keyboard.rememberKeyboardInfo
 
 @Composable
 fun ChatScreen() {
     val keyboard by rememberKeyboardInfo()
+    var text by remember { mutableStateOf("") }
 
     KeyboardAware {
         Column {
-            LazyColumn { /* messages */ }
+            LazyColumn(modifier = Modifier.weight(1f)) {
+                // message list
+            }
             TextField(value = text, onValueChange = { text = it })
-            Button(onClick = { }) { Text("Send") }
+            Button(onClick = { /* send */ }) { 
+                Text("Send") 
+            }
         }
     }
 
-    // Status banner
     if (keyboard.isVisible) {
-        Text("Keyboard: ${keyboard.height}")
+        Text("Keyboard Height: ${keyboard.height}")
     }
 }
 ```
 
-## Usage
+---
 
-### Option 1: `KeyboardAware` wrapper — moves content above keyboard
+## 📱 Platform Support
 
-```kotlin
-import io.github.govindtank.keyboard.KeyboardAware
+| Platform | Detection Mechanism | Notes |
+| :--- | :--- | :--- |
+| **Android** | `ViewTreeObserver.OnGlobalLayoutListener` | Works on foldables, landscape, edge-to-edge |
+| **iOS** | `UIResponder.keyboardWillShowNotification` / `keyboardWillHideNotification` | Uses safe-area insets (iOS 15+) |
 
-KeyboardAware {
-    // Your content automatically stays above the keyboard
-    Column {
-        TextField(...)
-        Button(...) { }
-    }
-}
-```
+---
 
-### Option 2: `KeyboardAwareColumn` — Column variant with `ColumnScope`
+## 💖 Support & Sponsorship
 
-```kotlin
-import io.github.govindtank.keyboard.KeyboardAwareColumn
+If you find this library helpful for your Compose Multiplatform applications, consider supporting continuous development:
 
-KeyboardAwareColumn {
-    // ColumnScope available here
-    item { Text("Hello") }
-    item { TextField(...) }
-}
-```
+<p align="left">
+  <a href="https://www.patreon.com/govindtank"><img src="https://img.shields.io/badge/Patreon-Support%20Creator-F96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon"></a>
+  <a href="https://github.com/sponsors/govindtank"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Sponsor-EA4AAA?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Sponsors"></a>
+  <a href="https://buymeacoffee.com/govindtank"><img src="https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee"></a>
+</p>
 
-### Option 3: Manual control via `rememberKeyboardInfo()` state
+- **Patreon**: [patreon.com/govindtank](https://www.patreon.com/govindtank)
+- **GitHub Sponsors**: [github.com/sponsors/govindtank](https://github.com/sponsors/govindtank)
+- **Buy Me a Coffee**: [buymeacoffee.com/govindtank](https://buymeacoffee.com/govindtank)
 
-```kotlin
-import io.github.govindtank.keyboard.rememberKeyboardInfo
+---
 
-@Composable
-fun MyScreen() {
-    val keyboard by rememberKeyboardInfo()
+## 👨💻 Author
 
-    Box(
-        modifier = Modifier.padding(
-            bottom = if (keyboard.isVisible) keyboard.height else 0.dp
-        )
-    ) {
-        // Your content
-    }
-}
-```
+**Govind Tank**
+- **GitHub**: [@govindtank](https://github.com/govindtank)
+- **Website**: [govindtank.github.io](https://govindtank.github.io)
+- **LinkedIn**: [linkedin.com/in/govind-tank](https://linkedin.com/in/govind-tank)
 
-### Option 4: `Modifier.keyboardPadding()` — attach to any scrollable
+---
 
-```kotlin
-import io.github.govindtank.keyboard.rememberKeyboardInfo
-import io.github.govindtank.keyboard.keyboardPadding
+## 📄 License
 
-@Composable
-fun MessageList() {
-    val keyboard by rememberKeyboardInfo()
-
-    LazyColumn(
-        modifier = Modifier.keyboardPadding(keyboard)
-    ) {
-        items(messages) { MessageItem(it) }
-    }
-}
-```
-
-## API Reference
-
-| Type | Kind | Description |
-|------|------|-------------|
-| `KeyboardAware` | `@Composable fun` | Wrapper that pushes content up when keyboard appears. Receives `KeyboardInfo` in content lambda. |
-| `KeyboardAwareColumn` | `@Composable fun` | Column variant providing `ColumnScope` inside content lambda. |
-| `rememberKeyboardInfo()` | `@Composable expect fun` | Returns `State<KeyboardInfo>` observing keyboard visibility, height, animation duration. |
-| `KeyboardInfo` | `data class` | Holds `isVisible: Boolean`, `height: Dp`, `animationDurationMs: Long`. |
-| `KeyboardInfo.Hidden` | `companion val` | Empty state — `KeyboardInfo(false, 0.dp, 0L)`. |
-| `Modifier.keyboardPadding()` | `fun Modifier` | Adds bottom padding equal to keyboard height when visible. Use on `LazyColumn`, `Column`, `Box`, etc. |
-
-### `KeyboardInfo` Properties
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `isVisible` | `Boolean` | Whether the keyboard is currently shown |
-| `height` | `Dp` | Keyboard height in Density-independent pixels |
-| `animationDurationMs` | `Long` | Show/hide animation duration in milliseconds |
-
-## Platform Support
-
-| Platform | Detection Method | Notes |
-|----------|------------------|-------|
-| **Android** | `ViewTreeObserver.OnGlobalLayoutListener` + visible display frame | Works on foldables, landscape, gesture nav. Falls back to `imePadding` when available. |
-| **iOS** | `UIResponder.keyboardWillShowNotification` / `keyboardWillHideNotification` | Uses safe-area insets (iOS 15+). Handles split keyboard, floating keyboard, external keyboards. |
-
-## Sample
-
-Check the `sample/` directory for a complete working app with form and chat demos.
-
-## License
-
-Apache 2.0
+Apache License 2.0
